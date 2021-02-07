@@ -21,7 +21,7 @@ class CreateCustomerService {
     name,
     email,
   }: IRequest): Promise<Customer | undefined> {
-    const customerExists = this.customersRepository.findByEmail(email);
+    const customerExists = await this.customersRepository.findByEmail(email);
 
     if (customerExists) {
       throw new AppError('Email alreary in use');
